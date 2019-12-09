@@ -10,9 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1330138206566438950}
   - component: {fileID: 1330138206566438953}
-  - component: {fileID: 1330138206566438949}
   m_Layer: 8
-  m_Name: Gr1 (11)
+  m_Name: PlataformaPedra
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -82,22 +81,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!70 &1330138206566438949
-CapsuleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1330138206566438952}
-  m_Enabled: 0
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0.05919418, y: 0.4016874}
-  m_Size: {x: 1.1919421, y: 0.15393718}
-  m_Direction: 1
 --- !u!1 &8527847883134664525
 GameObject:
   m_ObjectHideFlags: 0
@@ -154,8 +137,11 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: 0.02491906, y: 0.5087373}
-      - {x: -0.66267645, y: 0.4079548}
+    - - {x: -0.05907812, y: 0.4943461}
+      - {x: -0.39859986, y: 0.46572575}
+      - {x: -0.59924436, y: 0.3845125}
+      - {x: -0.6499967, y: 0.35978496}
+      - {x: -0.61940646, y: 0.22999789}
       - {x: -0.50736713, y: -0.20891394}
       - {x: -0.49878854, y: -0.5527061}
       - {x: -0.12119225, y: -0.57486475}
@@ -165,6 +151,7 @@ PolygonCollider2D:
       - {x: -0.045232475, y: -0.29194808}
       - {x: 0.018205464, y: -0.22163767}
       - {x: 0.4517788, y: 0.04727938}
-      - {x: 0.6216046, y: 0.3135944}
-      - {x: 0.66348875, y: 0.44972295}
-      - {x: 0.5843893, y: 0.51193}
+      - {x: 0.5520804, y: 0.28687873}
+      - {x: 0.5588145, y: 0.30910942}
+      - {x: 0.56622213, y: 0.50178194}
+      - {x: 0.34960988, y: 0.5017449}

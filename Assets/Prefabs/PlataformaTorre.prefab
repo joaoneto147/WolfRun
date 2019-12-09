@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 1907008869511757717}
   - component: {fileID: 1907008869511757721}
   m_Layer: 8
-  m_Name: PedraPlataforma 1
+  m_Name: PlataformaTorre
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -25,7 +25,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1907008869511757716}
-  m_LocalRotation: {x: -0.014644517, y: 0.08290562, z: 0.17333043, w: 0.98125875}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -2.7030206, y: -0.07000198, z: -0.000079870224}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -36,7 +36,7 @@ Transform:
   - {fileID: 4364533602507449295}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: -3.295, y: 9.084001, z: 19.773}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &1907008869511757717
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -478,7 +478,7 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: 0.02491906, y: 0.5087373}
+    - - {x: 0.01774025, y: 0.46925384}
       - {x: -0.66267645, y: 0.4079548}
       - {x: -0.50736713, y: -0.20891394}
       - {x: -0.49878854, y: -0.5527061}
@@ -491,4 +491,4 @@ PolygonCollider2D:
       - {x: 0.4517788, y: 0.04727938}
       - {x: 0.6216046, y: 0.3135944}
       - {x: 0.66348875, y: 0.44972295}
-      - {x: 0.5843893, y: 0.51193}
+      - {x: 0.5628526, y: 0.48680413}
