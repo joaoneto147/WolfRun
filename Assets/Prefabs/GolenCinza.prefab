@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 4135979795162873687}
   m_Layer: 10
   m_Name: GolenCinza
-  m_TagString: Untagged
+  m_TagString: Enemey
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -72,7 +72,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 10
   m_Sprite: {fileID: 21300000, guid: 709e5ccc5902255438cdf907e3b513fa, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -262,6 +262,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c9682bed58dad504ba56c8fe73c95909, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  direction: 1
+  movimentSpeed: 2
   health: 0
-  speed: 3
-  distanceAttack: 0
+  distanceAttack: 5

@@ -6,6 +6,6 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Free Asset - 2D Handcrafted Art/DemoScene.unity
-    guid: d30fbee988f498842a6e22beea9f1786
+    path: Assets/Scenes/Fase1.unity
+    guid: 52d022e8316190e419269cd3ee485741
   m_configObjects: {}
