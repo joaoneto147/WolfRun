@@ -6,6 +6,7 @@ TagManager:
   tags:
   - New tag
   - Enemey
+  - Bullet
   layers:
   - Default
   - TransparentFX
@@ -19,7 +20,7 @@ TagManager:
   - Player
   - Enemey
   - Trigger
-  - 
+  - Bullet
   - 
   - 
   - 

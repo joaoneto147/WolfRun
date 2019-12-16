@@ -6,19 +6,14 @@ public class Golen : EnemyController
 {
     // Start is called before the first frame update
     protected override void Start()
-    {        
-        health = 2;
+    {
         base.Start();
     }
 
     // Update is called once per frame
-    void Update()
+    protected override void Update()
     {
-        float distance = PlayerDistance();
-        isMoving = (distance < distanceAttack) && (distance > 0.5f);
-       
-        TratarDirecao();
-        AtualizarInfoAnimacao();
+        base.Update();
     }
 
     private void FixedUpdate()
@@ -26,7 +21,15 @@ public class Golen : EnemyController
         if (isMoving)
             body.velocity = new Vector2(direction * movimentSpeed, body.velocity.y);
 
+        if (isAtack)
+            AtackPlayer();
+    }
 
-        Debug.Log(movimentSpeed);
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.transform.CompareTag("Bullet"))
+        {
+            DamageEnemy();
+        }
     }
 }

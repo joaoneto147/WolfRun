@@ -6,9 +6,9 @@ using UnityEngine;
 
 public class Player : GenericController
 {
-    private bool jumping = false;
-    
-    private float move;
+
+
+    private float moveDirection;
     private Rigidbody2D body;
 
     [SerializeField] private bool isGrounded;
@@ -16,12 +16,19 @@ public class Player : GenericController
     public float sizeRadius = 0.2f;
     public LayerMask whatIsGround;
 
+
+    [SerializeField] private GameObject skillPrefab = null;
+    [SerializeField] private Transform skillPoint = null;
     [SerializeField] private float jumpForce = 25;
 
+    protected override void Awake()
+    {
+        base.Awake();
+    }
     // Start is called before the first frame update
     protected override void Start()
     {
-        base.Start();       
+        base.Start();
         body = GetComponent<Rigidbody2D>();
     }
 
@@ -31,39 +38,36 @@ public class Player : GenericController
     }
 
     //Update is called once per frame
-    void Update()
+    protected override void Update()
     {
-        //Reconhecer o chão
-        isGrounded = Physics2D.OverlapCircle(feetPosition.position, sizeRadius, whatIsGround);
-
-        move = Input.GetAxis("Horizontal");
+        base.Update();
+        moveDirection = Input.GetAxis("Horizontal");
 
         //Caso precise girar o personagem
-        if (move * direction > 0)
+        if (moveDirection * direction < 0)
             Flip();
 
-        //Se apertou para pular
-        if (Input.GetButtonDown("Jump") && isGrounded)
+        isGrounded = Physics2D.OverlapCircle(feetPosition.position, sizeRadius, whatIsGround);
+        isJumping = (Input.GetButtonDown("Jump") && isGrounded);
+        isAtack = Input.GetButtonDown("Fire1") && (timeAtack <= timeLastAtack);
+        isMoving = moveDirection != 0;
+
+        //Pulo do personagem
+        if (isJumping)
         {
-            jumping = true;
+            Jump();
         }
 
-        //Controlar animações
-        AtualizarInfoAnimacao();
+        if (isAtack)
+            StartCoroutine(Atack());
 
+        //Controlar animações
+        AtualizarInfoAnimacao();        
     }
 
     private void FixedUpdate()
     {
-        body.velocity = new Vector2(move * movimentSpeed, body.velocity.y);
-
-        //Pulo do personagem
-        if (jumping)
-        {
-            body.AddForce(new Vector2(0f, jumpForce), ForceMode2D.Impulse);
-            //body.velocity = Vector2.up * jumpForce; --Apenas para questões de conhecimento podemos manipular o pulo desta forma tbm;
-            jumping = false;
-        }
+        body.velocity = new Vector2(moveDirection * movimentSpeed, body.velocity.y);
 
         if (transform.position.y < -9)
         {
@@ -72,10 +76,24 @@ public class Player : GenericController
 
     }
 
+    IEnumerator Atack()
+    {
+        yield return new WaitForSeconds(0.1f);
+        Instantiate(skillPrefab, skillPoint.position, Quaternion.identity);
+        timeLastAtack = 0;
+    }
+
+    private void Jump()
+    {
+        body.AddForce(new Vector2(0f, jumpForce), ForceMode2D.Impulse);
+        //body.velocity = Vector2.up * jumpForce; --Apenas para questões de conhecimento podemos manipular o pulo desta forma tbm;
+    }
+
     private void AtualizarInfoAnimacao()
     {
-        ControleAnimacao("Walking", move != 0);
-        ControleAnimacao("Jumping", jumping);
+        ControleAnimacao("Walking", isMoving);
+        ControleAnimacao("Jumping", isJumping);
+        ControleAnimacao("Atack", isAtack);
     }
 
     private void OnDrawGizmosSelected()
@@ -101,8 +119,14 @@ public class Player : GenericController
 
     public void DamagePlayer()
     {
+        if (invunerable)
+            return;
+
         health--;
         invunerable = true;
+
+        audioSource.clip = soundDamageTaken;
+        audioSource.Play();
 
         StartCoroutine(Damage());
 
@@ -110,6 +134,16 @@ public class Player : GenericController
         {
             SceneManager.LoadScene("Fase1");
         }
+    }
+
+    public Transform GetTransform()
+    {
+        return this.transform;
+    }
+
+    public int getDirection()
+    {
+        return direction;
     }
 
 }
